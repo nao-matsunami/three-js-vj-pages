@@ -1,0 +1,11 @@
+{
+  "name": "three-js-vj-pages-source",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "daily:update": "node scripts/upsert-daily-drop.mjs",
+    "daily:publish": "node scripts/upsert-daily-drop.mjs && node scripts/publish-pages.mjs",
+    "publish:pages": "node scripts/publish-pages.mjs"
+  }
+}
