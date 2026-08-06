@@ -199,6 +199,29 @@ function renderContent() {
 function renderSources() {
   const sourceList = document.querySelector("#source-list");
   sourceList.innerHTML = "";
+  if (Array.isArray(activePiece.research)) {
+    activePiece.research.forEach((entry) => {
+      const li = document.createElement("li");
+      const title = document.createElement("strong");
+      title.textContent = `Daily Research ${entry.date}`;
+      const note = document.createElement("p");
+      note.textContent = entry.summary;
+      li.append(title, note);
+      if (Array.isArray(entry.sources)) {
+        entry.sources.forEach((source) => {
+          const link = document.createElement("a");
+          link.href = source.url;
+          link.target = "_blank";
+          link.rel = "noreferrer";
+          link.textContent = source.label;
+          const sourceNote = document.createElement("p");
+          sourceNote.textContent = source.note;
+          li.append(link, sourceNote);
+        });
+      }
+      sourceList.append(li);
+    });
+  }
   sources.forEach((source) => {
     const li = document.createElement("li");
     const link = document.createElement("a");
