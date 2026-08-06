@@ -5,25 +5,347 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Wireframe Pulse Room / Three.js VJ Site</title>
     <style>
-      :root { color-scheme: dark; --bg: #050607; --ink: #f4f7f8; --muted: #9aa7ac; --line: #263236; }
-      * { box-sizing: border-box; }
-      body { margin: 0; min-height: 100vh; background: var(--bg); color: var(--ink); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-      header { min-height: 104px; padding: 18px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; align-items: center; }
-      h1 { margin: 0; font-size: clamp(22px, 4vw, 42px); line-height: 1; }
-      p { margin: 6px 0 0; color: var(--muted); line-height: 1.6; }
-      a { color: var(--ink); }
-      iframe { display: block; width: 100%; height: calc(100vh - 104px); border: 0; background: #000; }
-      @media (max-width: 760px) { header { display: block; } iframe { height: calc(100vh - 142px); } }
+      :root {
+        color-scheme: dark;
+        --bg: #020304;
+        --ink: #eef8f9;
+        --muted: #94a7aa;
+        --cyan: #42f4ff;
+        --coral: #ff6a45;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 50% 42%, rgba(25, 49, 55, 0.48), transparent 42%),
+          var(--bg);
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      canvas {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        cursor: crosshair;
+      }
+
+      .hud {
+        position: fixed;
+        inset: 18px 18px auto;
+        z-index: 2;
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        pointer-events: none;
+      }
+
+      .label {
+        max-width: min(520px, calc(100vw - 36px));
+        text-shadow: 0 1px 18px rgba(0, 0, 0, 0.72);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(20px, 4.4vw, 54px);
+        line-height: 0.95;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      p {
+        margin: 8px 0 0;
+        color: var(--muted);
+        font-size: clamp(12px, 1.4vw, 15px);
+        line-height: 1.55;
+      }
+
+      a {
+        pointer-events: auto;
+        align-self: flex-start;
+        min-width: 112px;
+        padding: 10px 13px;
+        border: 1px solid rgba(238, 248, 249, 0.28);
+        background: rgba(2, 3, 4, 0.42);
+        color: var(--ink);
+        font-size: 12px;
+        line-height: 1;
+        text-align: center;
+        text-decoration: none;
+        backdrop-filter: blur(12px);
+      }
+
+      .meter {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        left: 18px;
+        z-index: 2;
+        height: 2px;
+        overflow: hidden;
+        background: rgba(238, 248, 249, 0.13);
+      }
+
+      .meter span {
+        display: block;
+        width: 100%;
+        height: 100%;
+        transform-origin: left center;
+        background: linear-gradient(90deg, var(--cyan), #f24dff, var(--coral));
+        animation: loop-meter 20s linear infinite;
+      }
+
+      @keyframes loop-meter {
+        from { transform: scaleX(0); }
+        to { transform: scaleX(1); }
+      }
+
+      @media (max-width: 680px) {
+        .hud {
+          display: block;
+        }
+
+        a {
+          display: inline-block;
+          margin-top: 12px;
+        }
+      }
     </style>
   </head>
   <body>
-    <header>
-      <div>
+    <canvas id="stage" aria-label="Wireframe Pulse Room looping visual"></canvas>
+    <div class="hud">
+      <div class="label">
         <h1>Wireframe Pulse Room</h1>
-        <p>2026-08-06 / Three.js VJ Site / 20s loop</p>
+        <p>Three.js standalone sample / 2026-08-06 / locked 20 second loop</p>
       </div>
       <a href="../days/2026-08-06.html">Daily report</a>
-    </header>
-    <iframe src="../live.html?date=2026-08-06" title="Wireframe Pulse Room live preview"></iframe>
+    </div>
+    <div class="meter" aria-hidden="true"><span></span></div>
+
+    <script type="module">
+      import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js";
+
+      const canvas = document.querySelector("#stage");
+      const renderer = new THREE.WebGLRenderer({
+        canvas,
+        antialias: true,
+        alpha: true,
+        powerPreference: "high-performance",
+      });
+      renderer.setClearColor(0x000000, 0);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+
+      const scene = new THREE.Scene();
+      scene.fog = new THREE.FogExp2(0x020304, 0.045);
+
+      const camera = new THREE.PerspectiveCamera(68, 1, 0.1, 140);
+      camera.position.set(0, 0.4, 8);
+
+      const loopSeconds = 20;
+      const clock = new THREE.Clock();
+      const pointer = new THREE.Vector2(0, 0);
+      const targetPointer = new THREE.Vector2(0, 0);
+
+      const cyan = new THREE.Color("#42f4ff");
+      const magenta = new THREE.Color("#f24dff");
+      const coral = new THREE.Color("#ff6a45");
+      const dim = new THREE.Color("#143238");
+
+      const root = new THREE.Group();
+      scene.add(root);
+
+      const tunnel = new THREE.Group();
+      root.add(tunnel);
+
+      const ringGeometry = new THREE.BoxGeometry(8.2, 4.6, 0.035);
+      const ringEdges = new THREE.EdgesGeometry(ringGeometry);
+      const ringMaterials = [
+        new THREE.LineBasicMaterial({ color: cyan, transparent: true, opacity: 0.72 }),
+        new THREE.LineBasicMaterial({ color: magenta, transparent: true, opacity: 0.54 }),
+        new THREE.LineBasicMaterial({ color: coral, transparent: true, opacity: 0.58 }),
+      ];
+      const rings = [];
+
+      for (let i = 0; i < 34; i += 1) {
+        const ring = new THREE.LineSegments(ringEdges, ringMaterials[i % ringMaterials.length]);
+        ring.position.z = -i * 1.6;
+        ring.userData.offset = i / 34;
+        tunnel.add(ring);
+        rings.push(ring);
+      }
+
+      const grid = new THREE.Group();
+      root.add(grid);
+
+      const lineMaterial = new THREE.LineBasicMaterial({
+        color: dim,
+        transparent: true,
+        opacity: 0.52,
+      });
+
+      for (let i = -12; i <= 12; i += 1) {
+        const x = i * 0.7;
+        const vertical = new THREE.BufferGeometry().setFromPoints([
+          new THREE.Vector3(x, -2.6, 1.4),
+          new THREE.Vector3(x, -2.6, -54),
+        ]);
+        grid.add(new THREE.Line(vertical, lineMaterial));
+
+        const horizontal = new THREE.BufferGeometry().setFromPoints([
+          new THREE.Vector3(-8.4, -2.6, i * 1.4),
+          new THREE.Vector3(8.4, -2.6, i * 1.4),
+        ]);
+        grid.add(new THREE.Line(horizontal, lineMaterial));
+      }
+
+      const shardGeometry = new THREE.IcosahedronGeometry(0.48, 1);
+      const shardEdges = new THREE.EdgesGeometry(shardGeometry);
+      const shards = [];
+
+      for (let i = 0; i < 54; i += 1) {
+        const material = new THREE.LineBasicMaterial({
+          color: i % 3 === 0 ? coral : i % 3 === 1 ? cyan : magenta,
+          transparent: true,
+          opacity: 0.62,
+        });
+        const shard = new THREE.LineSegments(shardEdges, material);
+        const lane = (i % 9) - 4;
+        const row = Math.floor(i / 9) - 3;
+        shard.position.set(lane * 1.18, row * 0.58, -4 - i * 0.78);
+        shard.userData.seed = i * 0.137;
+        root.add(shard);
+        shards.push(shard);
+      }
+
+      const bloomPlane = new THREE.Mesh(
+        new THREE.PlaneGeometry(16, 9),
+        new THREE.ShaderMaterial({
+          transparent: true,
+          depthWrite: false,
+          uniforms: {
+            uTime: { value: 0 },
+            uAspect: { value: 1 },
+          },
+          vertexShader: `
+            varying vec2 vUv;
+            void main() {
+              vUv = uv;
+              gl_Position = vec4(position.xy, 0.0, 1.0);
+            }
+          `,
+          fragmentShader: `
+            precision highp float;
+            varying vec2 vUv;
+            uniform float uTime;
+            uniform float uAspect;
+
+            #define PI 3.141592653589793
+
+            void main() {
+              vec2 uv = vUv * 2.0 - 1.0;
+              uv.x *= uAspect;
+              float pulse = 0.5 + 0.5 * sin(uTime * PI * 2.0);
+              float core = smoothstep(0.72, 0.0, length(uv));
+              float bars = smoothstep(0.02, 0.0, abs(fract((uv.y + pulse) * 9.0) - 0.5));
+              vec3 color = mix(vec3(0.03, 0.92, 1.0), vec3(1.0, 0.33, 0.18), pulse);
+              gl_FragColor = vec4(color * (core * 0.12 + bars * 0.025), core * 0.36);
+            }
+          `,
+        }),
+      );
+      bloomPlane.frustumCulled = false;
+      scene.add(bloomPlane);
+
+      const scanline = new THREE.Mesh(
+        new THREE.PlaneGeometry(16, 0.025),
+        new THREE.MeshBasicMaterial({
+          color: 0xffffff,
+          transparent: true,
+          opacity: 0.42,
+          depthWrite: false,
+        }),
+      );
+      scanline.position.z = -1;
+      scene.add(scanline);
+
+      window.addEventListener("pointermove", (event) => {
+        targetPointer.x = (event.clientX / window.innerWidth - 0.5) * 2;
+        targetPointer.y = (event.clientY / window.innerHeight - 0.5) * -2;
+      });
+
+      window.addEventListener("click", () => {
+        root.rotation.z += Math.PI / 4;
+      });
+
+      window.addEventListener("resize", resize);
+      resize();
+      renderer.setAnimationLoop(render);
+
+      function resize() {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        renderer.setSize(width, height, false);
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+        bloomPlane.material.uniforms.uAspect.value = width / height;
+      }
+
+      function render() {
+        const elapsed = clock.getElapsedTime();
+        const cycle = (elapsed % loopSeconds) / loopSeconds;
+        const phase = cycle * Math.PI * 2;
+
+        pointer.lerp(targetPointer, 0.045);
+
+        camera.position.x = Math.sin(phase) * 0.8 + pointer.x * 0.7;
+        camera.position.y = 0.32 + Math.cos(phase * 2) * 0.16 + pointer.y * 0.38;
+        camera.position.z = 8 + Math.sin(phase * 3) * 0.18;
+        camera.lookAt(Math.sin(phase + 1.1) * 0.8, Math.cos(phase) * 0.35, -14);
+
+        root.rotation.z = Math.sin(phase) * 0.05 + pointer.x * 0.06;
+        tunnel.rotation.z = phase * 0.18;
+        grid.position.z = (cycle * 12) % 1.4;
+
+        rings.forEach((ring) => {
+          const local = (cycle + ring.userData.offset) % 1;
+          const scale = 0.74 + Math.sin((local * Math.PI * 2) + phase) * 0.08;
+          ring.scale.setScalar(scale);
+          ring.position.z = 2 - local * 54;
+          ring.rotation.z = phase * 0.22 + ring.userData.offset * Math.PI;
+          ring.material.opacity = 0.2 + (1 - local) * 0.72;
+        });
+
+        shards.forEach((shard) => {
+          const seed = shard.userData.seed;
+          const orbit = phase + seed * Math.PI * 2;
+          shard.rotation.x = orbit * 0.7;
+          shard.rotation.y = orbit * 1.1;
+          shard.position.x += Math.sin(orbit) * 0.0008;
+          shard.position.y += Math.cos(orbit * 1.7) * 0.0008;
+          shard.position.z += 0.034;
+          if (shard.position.z > 4) shard.position.z -= 46;
+          shard.scale.setScalar(0.55 + 0.45 * (0.5 + 0.5 * Math.sin(orbit * 2)));
+          shard.material.opacity = 0.24 + 0.52 * (0.5 + 0.5 * Math.sin(orbit));
+        });
+
+        scanline.position.y = -4.5 + cycle * 9;
+        scanline.material.opacity = 0.18 + 0.34 * (0.5 + 0.5 * Math.sin(phase * 4));
+        bloomPlane.material.uniforms.uTime.value = cycle;
+
+        renderer.render(scene, camera);
+      }
+    </script>
   </body>
 </html>

@@ -58,8 +58,8 @@
     {
       "title": "今日のミニ試作候補",
       "titleEn": "Today's mini prototype candidate",
-      "body": "Wireframe Pulse Room を 20 秒でループするVJサンプルとして固定しました。GitHub Pagesでは軽量プレビューを見せ、販売用のMP4やalpha MOVは選抜後にMac miniで固定FPSレンダーします。",
-      "bodyEn": "Wireframe Pulse Room is fixed as a 20-second looping VJ sample. GitHub Pages carries the lightweight preview, while saleable MP4 and alpha MOV masters should be rendered later on the Mac mini at fixed FPS.",
+      "body": "Wireframe Pulse Room を 20 秒でループする独立HTMLサンプルとして固定しました。iframeではなく出力ページ単体でThree.jsシーンを再生できるため、現場確認、録画、販売用MP4やalpha MOVへの選抜がしやすい構成です。",
+      "bodyEn": "Wireframe Pulse Room is fixed as a standalone 20-second looping HTML sample. The output page now plays the Three.js scene directly without an iframe, making it easier to review live, record, and select for saleable MP4 or alpha MOV rendering.",
       "links": [
         {
           "label": "Today's sample",
