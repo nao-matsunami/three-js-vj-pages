@@ -1,0 +1,49 @@
+{
+  "date": "2026-08-07",
+  "headline": "Orbital Mesh Gate",
+  "headlineEn": "Orbital Mesh Gate",
+  "summary": "Three.js VJ Siteの最初のフレーム。3Dトンネル、軌道メッシュ、グロウ表現を想定したサンプルで、後から本格的なThree.js sceneへ差し替える前提にしている。",
+  "summaryEn": "Three.js VJ Siteの最初のフレーム。3Dトンネル、軌道メッシュ、グロウ表現を想定したサンプルで、後から本格的なThree.js sceneへ差し替える前提にしている。",
+  "links": [
+    {
+      "label": "Today's sample",
+      "url": "../outputs/2026-08-07_orbital-mesh-gate.html"
+    },
+    {
+      "label": "Live preview",
+      "url": "../live.html"
+    },
+    {
+      "label": "Three.js Manual",
+      "url": "https://threejs.org/manual/"
+    },
+    {
+      "label": "Three.js Documentation",
+      "url": "https://threejs.org/docs/"
+    }
+  ],
+  "sections": [
+    {
+      "title": "今日の制作メモ",
+      "titleEn": "Production note",
+      "body": "次の非GLSLパイプラインとしてThree.jsを選んだ。3Dカメラ、メッシュ、ライト、ポストエフェクトを扱えるため、XRや空間演出に展開しやすい。まずはサイト、日次データ、販売リンク、書き出しボタンを揃え、表現実装を安全に差し替えられるフレームを先に作る。",
+      "bodyEn": "次の非GLSLパイプラインとしてThree.jsを選んだ。3Dカメラ、メッシュ、ライト、ポストエフェクトを扱えるため、XRや空間演出に展開しやすい。まずはサイト、日次データ、販売リンク、書き出しボタンを揃え、表現実装を安全に差し替えられるフレームを先に作る。",
+      "links": [
+        {
+          "label": "Three.js Manual",
+          "url": "https://threejs.org/manual/"
+        },
+        {
+          "label": "Three.js Documentation",
+          "url": "https://threejs.org/docs/"
+        }
+      ]
+    },
+    {
+      "title": "販売用データへの展開",
+      "titleEn": "Sales package route",
+      "body": "Three.js VJ Site はGitHub Pages上では軽量なサンプルとして公開し、MP4、alpha MOV、プロジェクトファイルなどの重い販売データはGumroadまたはPatreonへ置く前提です。",
+      "bodyEn": "Three.js VJ Site is published on GitHub Pages as a lightweight sample. Heavy saleable files such as MP4, alpha MOV, and project files should live on Gumroad or Patreon."
+    }
+  ]
+}
