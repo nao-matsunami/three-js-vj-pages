@@ -29,9 +29,20 @@
       "research": [
         {
           "date": "2026-08-10",
-          "summary": "Three.js VJ Site の日次レポートを追加。追加調査がある日は --notes-file で検索要約と出典を差し込む。",
-          "sources": [],
-          "updatedAt": "2026-08-10T06:27:54.728Z"
+          "summary": "今日はWebGLRendererとAnimationLoopの運用を重視した。XRや展示用途へ広げるなら、レンダーサイズ、カメラ、時間の扱いを最初から分離しておく価値がある。",
+          "sources": [
+            {
+              "label": "Three.js WebGLRenderer",
+              "url": "https://threejs.org/docs/#api/en/renderers/WebGLRenderer",
+              "note": "レンダラー設定の確認に使う。"
+            },
+            {
+              "label": "Three.js Creating a Scene",
+              "url": "https://threejs.org/docs/#manual/en/introduction/Creating-a-scene",
+              "note": "シーン構造の基本確認。"
+            }
+          ],
+          "updatedAt": "2026-08-10T07:36:08.894Z"
         }
       ]
     },

@@ -20,6 +20,14 @@
     {
       "label": "Three.js Documentation",
       "url": "https://threejs.org/docs/"
+    },
+    {
+      "label": "Three.js WebGLRenderer",
+      "url": "https://threejs.org/docs/#api/en/renderers/WebGLRenderer"
+    },
+    {
+      "label": "Three.js Creating a Scene",
+      "url": "https://threejs.org/docs/#manual/en/introduction/Creating-a-scene"
     }
   ],
   "sections": [
@@ -42,9 +50,18 @@
     {
       "title": "Daily Research 2026-08-10",
       "titleEn": "Daily Research 2026-08-10",
-      "body": "Three.js VJ Site の日次レポートを追加。追加調査がある日は --notes-file で検索要約と出典を差し込む。",
-      "bodyEn": "Three.js VJ Site の日次レポートを追加。追加調査がある日は --notes-file で検索要約と出典を差し込む。",
-      "links": []
+      "body": "今日はWebGLRendererとAnimationLoopの運用を重視した。XRや展示用途へ広げるなら、レンダーサイズ、カメラ、時間の扱いを最初から分離しておく価値がある。",
+      "bodyEn": "今日はWebGLRendererとAnimationLoopの運用を重視した。XRや展示用途へ広げるなら、レンダーサイズ、カメラ、時間の扱いを最初から分離しておく価値がある。",
+      "links": [
+        {
+          "label": "Three.js WebGLRenderer",
+          "url": "https://threejs.org/docs/#api/en/renderers/WebGLRenderer"
+        },
+        {
+          "label": "Three.js Creating a Scene",
+          "url": "https://threejs.org/docs/#manual/en/introduction/Creating-a-scene"
+        }
+      ]
     },
     {
       "title": "今日のミニ試作候補",
