@@ -1,0 +1,62 @@
+{
+  "date": "2026-08-10",
+  "headline": "Wireframe Pulse Room",
+  "headlineEn": "Wireframe Pulse Room",
+  "summary": "3Dカメラ、軌道メッシュ、奥行き感を主役にしたThree.js VJループのサンプル。",
+  "summaryEn": "3Dカメラ、軌道メッシュ、奥行き感を主役にしたThree.js VJループのサンプル。",
+  "links": [
+    {
+      "label": "Today's sample",
+      "url": "../outputs/2026-08-10_wireframe-pulse-room.html"
+    },
+    {
+      "label": "Live preview",
+      "url": "../live.html"
+    },
+    {
+      "label": "Three.js Manual",
+      "url": "https://threejs.org/manual/"
+    },
+    {
+      "label": "Three.js Documentation",
+      "url": "https://threejs.org/docs/"
+    }
+  ],
+  "sections": [
+    {
+      "title": "今日の制作メモ",
+      "titleEn": "Production note",
+      "body": "Three.jsはカメラ、メッシュ、ライト、ポストエフェクトを扱う3D VJ素材に向く。まずは日次データと公開導線を固定し、後からscene実装を差し替えやすい形にした。",
+      "bodyEn": "Three.jsはカメラ、メッシュ、ライト、ポストエフェクトを扱う3D VJ素材に向く。まずは日次データと公開導線を固定し、後からscene実装を差し替えやすい形にした。",
+      "links": [
+        {
+          "label": "Three.js Manual",
+          "url": "https://threejs.org/manual/"
+        },
+        {
+          "label": "Three.js Documentation",
+          "url": "https://threejs.org/docs/"
+        }
+      ]
+    },
+    {
+      "title": "Daily Research 2026-08-10",
+      "titleEn": "Daily Research 2026-08-10",
+      "body": "Three.js VJ Site の日次レポートを追加。追加調査がある日は --notes-file で検索要約と出典を差し込む。",
+      "bodyEn": "Three.js VJ Site の日次レポートを追加。追加調査がある日は --notes-file で検索要約と出典を差し込む。",
+      "links": []
+    },
+    {
+      "title": "今日のミニ試作候補",
+      "titleEn": "Today's mini prototype candidate",
+      "body": "Wireframe Pulse Room を 8 秒でループするVJサンプルとして固定しました。GitHub Pagesでは軽量プレビューを見せ、販売用のMP4やalpha MOVは選抜後にMac miniで固定FPSレンダーします。",
+      "bodyEn": "Wireframe Pulse Room is fixed as a 8-second looping VJ sample. GitHub Pages carries the lightweight preview, while saleable MP4 and alpha MOV masters should be rendered later on the Mac mini at fixed FPS.",
+      "links": [
+        {
+          "label": "Today's sample",
+          "url": "../outputs/2026-08-10_wireframe-pulse-room.html"
+        }
+      ]
+    }
+  ]
+}

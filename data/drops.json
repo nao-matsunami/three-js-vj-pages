@@ -13,6 +13,29 @@
   ],
   "drops": [
     {
+      "date": "2026-08-10",
+      "title": "Wireframe Pulse Room",
+      "loopSeconds": 8,
+      "palette": [
+        0.92,
+        0.746,
+        0.294,
+        0.218,
+        0.779,
+        0.78
+      ],
+      "copy": "3Dカメラ、軌道メッシュ、奥行き感を主役にしたThree.js VJループのサンプル。",
+      "why": "Three.jsはカメラ、メッシュ、ライト、ポストエフェクトを扱う3D VJ素材に向く。まずは日次データと公開導線を固定し、後からscene実装を差し替えやすい形にした。",
+      "research": [
+        {
+          "date": "2026-08-10",
+          "summary": "Three.js VJ Site の日次レポートを追加。追加調査がある日は --notes-file で検索要約と出典を差し込む。",
+          "sources": [],
+          "updatedAt": "2026-08-10T06:27:54.728Z"
+        }
+      ]
+    },
+    {
       "date": "2026-08-07",
       "title": "Orbital Mesh Gate",
       "loopSeconds": 16,
