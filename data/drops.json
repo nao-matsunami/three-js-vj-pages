@@ -13,6 +13,40 @@
   ],
   "drops": [
     {
+      "date": "2026-08-11",
+      "title": "Camera Halo Tunnel",
+      "loopSeconds": 20,
+      "palette": [
+        0.294,
+        0.739,
+        0.92,
+        0.78,
+        0.218,
+        0.461
+      ],
+      "copy": "XRや空間投影に転用しやすい、カメラ運動とメッシュ周期をそろえた抽象ループ。",
+      "why": "XRや空間演出へ展開するなら、2Dパターンより3Dシーンの方が拡張余地が大きい。今日のサンプルはそのためのフレーム確認を優先した。",
+      "research": [
+        {
+          "date": "2026-08-11",
+          "summary": "今日はThree.jsの強みであるカメラ運動、メッシュ、ライトを主軸にした。現場映えする素材にするには、2D模様よりも奥行きと視点移動をループさせる方が印象を作りやすい。",
+          "sources": [
+            {
+              "label": "Three.js Manual",
+              "url": "https://threejs.org/manual/",
+              "note": "Three.jsの制作手順確認に使う。"
+            },
+            {
+              "label": "Three.js Documentation",
+              "url": "https://threejs.org/docs/",
+              "note": "API確認の基準。"
+            }
+          ],
+          "updatedAt": "2026-08-10T21:45:07.254Z"
+        }
+      ]
+    },
+    {
       "date": "2026-08-10",
       "title": "Wireframe Pulse Room",
       "loopSeconds": 8,

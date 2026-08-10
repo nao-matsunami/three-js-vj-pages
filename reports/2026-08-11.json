@@ -1,0 +1,79 @@
+{
+  "date": "2026-08-11",
+  "headline": "Camera Halo Tunnel",
+  "headlineEn": "Camera Halo Tunnel",
+  "summary": "XRや空間投影に転用しやすい、カメラ運動とメッシュ周期をそろえた抽象ループ。",
+  "summaryEn": "XRや空間投影に転用しやすい、カメラ運動とメッシュ周期をそろえた抽象ループ。",
+  "links": [
+    {
+      "label": "Today's sample",
+      "url": "../outputs/2026-08-11_camera-halo-tunnel.html"
+    },
+    {
+      "label": "Live preview",
+      "url": "../live.html"
+    },
+    {
+      "label": "Three.js Manual",
+      "url": "https://threejs.org/manual/"
+    },
+    {
+      "label": "Three.js Documentation",
+      "url": "https://threejs.org/docs/"
+    },
+    {
+      "label": "Three.js Manual",
+      "url": "https://threejs.org/manual/"
+    },
+    {
+      "label": "Three.js Documentation",
+      "url": "https://threejs.org/docs/"
+    }
+  ],
+  "sections": [
+    {
+      "title": "今日の制作メモ",
+      "titleEn": "Production note",
+      "body": "XRや空間演出へ展開するなら、2Dパターンより3Dシーンの方が拡張余地が大きい。今日のサンプルはそのためのフレーム確認を優先した。",
+      "bodyEn": "XRや空間演出へ展開するなら、2Dパターンより3Dシーンの方が拡張余地が大きい。今日のサンプルはそのためのフレーム確認を優先した。",
+      "links": [
+        {
+          "label": "Three.js Manual",
+          "url": "https://threejs.org/manual/"
+        },
+        {
+          "label": "Three.js Documentation",
+          "url": "https://threejs.org/docs/"
+        }
+      ]
+    },
+    {
+      "title": "Daily Research 2026-08-11",
+      "titleEn": "Daily Research 2026-08-11",
+      "body": "今日はThree.jsの強みであるカメラ運動、メッシュ、ライトを主軸にした。現場映えする素材にするには、2D模様よりも奥行きと視点移動をループさせる方が印象を作りやすい。",
+      "bodyEn": "今日はThree.jsの強みであるカメラ運動、メッシュ、ライトを主軸にした。現場映えする素材にするには、2D模様よりも奥行きと視点移動をループさせる方が印象を作りやすい。",
+      "links": [
+        {
+          "label": "Three.js Manual",
+          "url": "https://threejs.org/manual/"
+        },
+        {
+          "label": "Three.js Documentation",
+          "url": "https://threejs.org/docs/"
+        }
+      ]
+    },
+    {
+      "title": "今日のミニ試作候補",
+      "titleEn": "Today's mini prototype candidate",
+      "body": "Camera Halo Tunnel を 20 秒でループするVJサンプルとして固定しました。GitHub Pagesでは軽量プレビューを見せ、販売用のMP4やalpha MOVは選抜後にMac miniで固定FPSレンダーします。",
+      "bodyEn": "Camera Halo Tunnel is fixed as a 20-second looping VJ sample. GitHub Pages carries the lightweight preview, while saleable MP4 and alpha MOV masters should be rendered later on the Mac mini at fixed FPS.",
+      "links": [
+        {
+          "label": "Today's sample",
+          "url": "../outputs/2026-08-11_camera-halo-tunnel.html"
+        }
+      ]
+    }
+  ]
+}
