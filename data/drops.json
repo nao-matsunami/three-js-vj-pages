@@ -13,6 +13,40 @@
   ],
   "drops": [
     {
+      "date": "2026-08-12",
+      "title": "Depth Lattice Sweep",
+      "loopSeconds": 16,
+      "palette": [
+        0.92,
+        0.294,
+        0.385,
+        0.218,
+        0.78,
+        0.294
+      ],
+      "copy": "販売用3D映像パックに展開するための、軽量なWebプレビューフレーム。",
+      "why": "3D素材は視点運動がループの印象を左右するため、整数周期のカメラ揺れとメッシュ配置を前提にした。GitHub Pagesでは軽量プレビュー、販売先では高品質レンダーを扱う。",
+      "research": [
+        {
+          "date": "2026-08-12",
+          "summary": "今日はWebGLRendererとAnimationLoopの運用を重視した。XRや展示用途へ広げるなら、レンダーサイズ、カメラ、時間の扱いを最初から分離しておく価値がある。",
+          "sources": [
+            {
+              "label": "Three.js WebGLRenderer",
+              "url": "https://threejs.org/docs/#api/en/renderers/WebGLRenderer",
+              "note": "レンダラー設定の確認に使う。"
+            },
+            {
+              "label": "Three.js Creating a Scene",
+              "url": "https://threejs.org/docs/#manual/en/introduction/Creating-a-scene",
+              "note": "シーン構造の基本確認。"
+            }
+          ],
+          "updatedAt": "2026-08-11T21:45:09.792Z"
+        }
+      ]
+    },
+    {
       "date": "2026-08-11",
       "title": "Camera Halo Tunnel",
       "loopSeconds": 20,

@@ -1,0 +1,79 @@
+{
+  "date": "2026-08-12",
+  "headline": "Depth Lattice Sweep",
+  "headlineEn": "Depth Lattice Sweep",
+  "summary": "販売用3D映像パックに展開するための、軽量なWebプレビューフレーム。",
+  "summaryEn": "販売用3D映像パックに展開するための、軽量なWebプレビューフレーム。",
+  "links": [
+    {
+      "label": "Today's sample",
+      "url": "../outputs/2026-08-12_depth-lattice-sweep.html"
+    },
+    {
+      "label": "Live preview",
+      "url": "../live.html"
+    },
+    {
+      "label": "Three.js Manual",
+      "url": "https://threejs.org/manual/"
+    },
+    {
+      "label": "Three.js Documentation",
+      "url": "https://threejs.org/docs/"
+    },
+    {
+      "label": "Three.js WebGLRenderer",
+      "url": "https://threejs.org/docs/#api/en/renderers/WebGLRenderer"
+    },
+    {
+      "label": "Three.js Creating a Scene",
+      "url": "https://threejs.org/docs/#manual/en/introduction/Creating-a-scene"
+    }
+  ],
+  "sections": [
+    {
+      "title": "今日の制作メモ",
+      "titleEn": "Production note",
+      "body": "3D素材は視点運動がループの印象を左右するため、整数周期のカメラ揺れとメッシュ配置を前提にした。GitHub Pagesでは軽量プレビュー、販売先では高品質レンダーを扱う。",
+      "bodyEn": "3D素材は視点運動がループの印象を左右するため、整数周期のカメラ揺れとメッシュ配置を前提にした。GitHub Pagesでは軽量プレビュー、販売先では高品質レンダーを扱う。",
+      "links": [
+        {
+          "label": "Three.js Manual",
+          "url": "https://threejs.org/manual/"
+        },
+        {
+          "label": "Three.js Documentation",
+          "url": "https://threejs.org/docs/"
+        }
+      ]
+    },
+    {
+      "title": "Daily Research 2026-08-12",
+      "titleEn": "Daily Research 2026-08-12",
+      "body": "今日はWebGLRendererとAnimationLoopの運用を重視した。XRや展示用途へ広げるなら、レンダーサイズ、カメラ、時間の扱いを最初から分離しておく価値がある。",
+      "bodyEn": "今日はWebGLRendererとAnimationLoopの運用を重視した。XRや展示用途へ広げるなら、レンダーサイズ、カメラ、時間の扱いを最初から分離しておく価値がある。",
+      "links": [
+        {
+          "label": "Three.js WebGLRenderer",
+          "url": "https://threejs.org/docs/#api/en/renderers/WebGLRenderer"
+        },
+        {
+          "label": "Three.js Creating a Scene",
+          "url": "https://threejs.org/docs/#manual/en/introduction/Creating-a-scene"
+        }
+      ]
+    },
+    {
+      "title": "今日のミニ試作候補",
+      "titleEn": "Today's mini prototype candidate",
+      "body": "Depth Lattice Sweep を 16 秒でループするVJサンプルとして固定しました。GitHub Pagesでは軽量プレビューを見せ、販売用のMP4やalpha MOVは選抜後にMac miniで固定FPSレンダーします。",
+      "bodyEn": "Depth Lattice Sweep is fixed as a 16-second looping VJ sample. GitHub Pages carries the lightweight preview, while saleable MP4 and alpha MOV masters should be rendered later on the Mac mini at fixed FPS.",
+      "links": [
+        {
+          "label": "Today's sample",
+          "url": "../outputs/2026-08-12_depth-lattice-sweep.html"
+        }
+      ]
+    }
+  ]
+}
