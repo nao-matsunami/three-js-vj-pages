@@ -13,6 +13,40 @@
   ],
   "drops": [
     {
+      "date": "2026-08-13",
+      "title": "Orbital Mesh Gate",
+      "loopSeconds": 12,
+      "palette": [
+        0.294,
+        0.92,
+        0.558,
+        0.612,
+        0.218,
+        0.78
+      ],
+      "copy": "3Dカメラ、軌道メッシュ、奥行き感を主役にしたThree.js VJループのサンプル。",
+      "why": "Three.jsはカメラ、メッシュ、ライト、ポストエフェクトを扱う3D VJ素材に向く。まずは日次データと公開導線を固定し、後からscene実装を差し替えやすい形にした。",
+      "research": [
+        {
+          "date": "2026-08-13",
+          "summary": "今日はThree.jsの強みであるカメラ運動、メッシュ、ライトを主軸にした。現場映えする素材にするには、2D模様よりも奥行きと視点移動をループさせる方が印象を作りやすい。",
+          "sources": [
+            {
+              "label": "Three.js Manual",
+              "url": "https://threejs.org/manual/",
+              "note": "Three.jsの制作手順確認に使う。"
+            },
+            {
+              "label": "Three.js Documentation",
+              "url": "https://threejs.org/docs/",
+              "note": "API確認の基準。"
+            }
+          ],
+          "updatedAt": "2026-08-12T21:45:11.326Z"
+        }
+      ]
+    },
+    {
       "date": "2026-08-12",
       "title": "Depth Lattice Sweep",
       "loopSeconds": 16,
