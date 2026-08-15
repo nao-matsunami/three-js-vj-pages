@@ -13,6 +13,40 @@
   ],
   "drops": [
     {
+      "date": "2026-08-16",
+      "title": "Orbital Mesh Gate",
+      "loopSeconds": 16,
+      "palette": [
+        0.551,
+        0.92,
+        0.294,
+        0.218,
+        0.291,
+        0.78
+      ],
+      "copy": "XRや空間投影に転用しやすい、カメラ運動とメッシュ周期をそろえた抽象ループ。",
+      "why": "XRや空間演出へ展開するなら、2Dパターンより3Dシーンの方が拡張余地が大きい。今日のサンプルはそのためのフレーム確認を優先した。",
+      "research": [
+        {
+          "date": "2026-08-16",
+          "summary": "今日はWebGLRendererとAnimationLoopの運用を重視した。XRや展示用途へ広げるなら、レンダーサイズ、カメラ、時間の扱いを最初から分離しておく価値がある。",
+          "sources": [
+            {
+              "label": "Three.js WebGLRenderer",
+              "url": "https://threejs.org/docs/#api/en/renderers/WebGLRenderer",
+              "note": "レンダラー設定の確認に使う。"
+            },
+            {
+              "label": "Three.js Creating a Scene",
+              "url": "https://threejs.org/docs/#manual/en/introduction/Creating-a-scene",
+              "note": "シーン構造の基本確認。"
+            }
+          ],
+          "updatedAt": "2026-08-15T21:45:13.379Z"
+        }
+      ]
+    },
+    {
       "date": "2026-08-15",
       "title": "Depth Lattice Sweep",
       "loopSeconds": 20,

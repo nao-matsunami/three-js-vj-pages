@@ -1,0 +1,79 @@
+{
+  "date": "2026-08-16",
+  "headline": "Orbital Mesh Gate",
+  "headlineEn": "Orbital Mesh Gate",
+  "summary": "XRや空間投影に転用しやすい、カメラ運動とメッシュ周期をそろえた抽象ループ。",
+  "summaryEn": "XRや空間投影に転用しやすい、カメラ運動とメッシュ周期をそろえた抽象ループ。",
+  "links": [
+    {
+      "label": "Today's sample",
+      "url": "../outputs/2026-08-16_orbital-mesh-gate.html"
+    },
+    {
+      "label": "Live preview",
+      "url": "../live.html"
+    },
+    {
+      "label": "Three.js Manual",
+      "url": "https://threejs.org/manual/"
+    },
+    {
+      "label": "Three.js Documentation",
+      "url": "https://threejs.org/docs/"
+    },
+    {
+      "label": "Three.js WebGLRenderer",
+      "url": "https://threejs.org/docs/#api/en/renderers/WebGLRenderer"
+    },
+    {
+      "label": "Three.js Creating a Scene",
+      "url": "https://threejs.org/docs/#manual/en/introduction/Creating-a-scene"
+    }
+  ],
+  "sections": [
+    {
+      "title": "今日の制作メモ",
+      "titleEn": "Production note",
+      "body": "XRや空間演出へ展開するなら、2Dパターンより3Dシーンの方が拡張余地が大きい。今日のサンプルはそのためのフレーム確認を優先した。",
+      "bodyEn": "XRや空間演出へ展開するなら、2Dパターンより3Dシーンの方が拡張余地が大きい。今日のサンプルはそのためのフレーム確認を優先した。",
+      "links": [
+        {
+          "label": "Three.js Manual",
+          "url": "https://threejs.org/manual/"
+        },
+        {
+          "label": "Three.js Documentation",
+          "url": "https://threejs.org/docs/"
+        }
+      ]
+    },
+    {
+      "title": "Daily Research 2026-08-16",
+      "titleEn": "Daily Research 2026-08-16",
+      "body": "今日はWebGLRendererとAnimationLoopの運用を重視した。XRや展示用途へ広げるなら、レンダーサイズ、カメラ、時間の扱いを最初から分離しておく価値がある。",
+      "bodyEn": "今日はWebGLRendererとAnimationLoopの運用を重視した。XRや展示用途へ広げるなら、レンダーサイズ、カメラ、時間の扱いを最初から分離しておく価値がある。",
+      "links": [
+        {
+          "label": "Three.js WebGLRenderer",
+          "url": "https://threejs.org/docs/#api/en/renderers/WebGLRenderer"
+        },
+        {
+          "label": "Three.js Creating a Scene",
+          "url": "https://threejs.org/docs/#manual/en/introduction/Creating-a-scene"
+        }
+      ]
+    },
+    {
+      "title": "今日のミニ試作候補",
+      "titleEn": "Today's mini prototype candidate",
+      "body": "Orbital Mesh Gate を 16 秒でループするVJサンプルとして固定しました。GitHub Pagesでは軽量プレビューを見せ、販売用のMP4やalpha MOVは選抜後にMac miniで固定FPSレンダーします。",
+      "bodyEn": "Orbital Mesh Gate is fixed as a 16-second looping VJ sample. GitHub Pages carries the lightweight preview, while saleable MP4 and alpha MOV masters should be rendered later on the Mac mini at fixed FPS.",
+      "links": [
+        {
+          "label": "Today's sample",
+          "url": "../outputs/2026-08-16_orbital-mesh-gate.html"
+        }
+      ]
+    }
+  ]
+}
