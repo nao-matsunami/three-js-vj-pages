@@ -13,6 +13,40 @@
   ],
   "drops": [
     {
+      "date": "2026-08-17",
+      "title": "Reflective Box Drift",
+      "loopSeconds": 12,
+      "palette": [
+        0.392,
+        0.294,
+        0.92,
+        0.78,
+        0.463,
+        0.218
+      ],
+      "copy": "販売用3D映像パックに展開するための、軽量なWebプレビューフレーム。",
+      "why": "3D素材は視点運動がループの印象を左右するため、整数周期のカメラ揺れとメッシュ配置を前提にした。GitHub Pagesでは軽量プレビュー、販売先では高品質レンダーを扱う。",
+      "research": [
+        {
+          "date": "2026-08-17",
+          "summary": "今日はThree.jsの強みであるカメラ運動、メッシュ、ライトを主軸にした。現場映えする素材にするには、2D模様よりも奥行きと視点移動をループさせる方が印象を作りやすい。",
+          "sources": [
+            {
+              "label": "Three.js Manual",
+              "url": "https://threejs.org/manual/",
+              "note": "Three.jsの制作手順確認に使う。"
+            },
+            {
+              "label": "Three.js Documentation",
+              "url": "https://threejs.org/docs/",
+              "note": "API確認の基準。"
+            }
+          ],
+          "updatedAt": "2026-08-16T21:45:08.941Z"
+        }
+      ]
+    },
+    {
       "date": "2026-08-16",
       "title": "Orbital Mesh Gate",
       "loopSeconds": 16,
