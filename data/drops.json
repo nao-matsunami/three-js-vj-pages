@@ -13,6 +13,40 @@
   ],
   "drops": [
     {
+      "date": "2026-08-19",
+      "title": "Reflective Box Drift",
+      "loopSeconds": 20,
+      "palette": [
+        0.92,
+        0.294,
+        0.408,
+        0.218,
+        0.78,
+        0.274
+      ],
+      "copy": "3Dカメラ、軌道メッシュ、奥行き感を主役にしたThree.js VJループのサンプル。",
+      "why": "Three.jsはカメラ、メッシュ、ライト、ポストエフェクトを扱う3D VJ素材に向く。まずは日次データと公開導線を固定し、後からscene実装を差し替えやすい形にした。",
+      "research": [
+        {
+          "date": "2026-08-19",
+          "summary": "今日はThree.jsの強みであるカメラ運動、メッシュ、ライトを主軸にした。現場映えする素材にするには、2D模様よりも奥行きと視点移動をループさせる方が印象を作りやすい。",
+          "sources": [
+            {
+              "label": "Three.js Manual",
+              "url": "https://threejs.org/manual/",
+              "note": "Three.jsの制作手順確認に使う。"
+            },
+            {
+              "label": "Three.js Documentation",
+              "url": "https://threejs.org/docs/",
+              "note": "API確認の基準。"
+            }
+          ],
+          "updatedAt": "2026-08-18T21:45:10.868Z"
+        }
+      ]
+    },
+    {
       "date": "2026-08-18",
       "title": "Orbital Mesh Gate",
       "loopSeconds": 8,
