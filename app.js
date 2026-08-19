@@ -41,6 +41,8 @@ precision highp float;
 uniform vec2 u_resolution;
 uniform float u_time;
 uniform float u_loop;
+uniform float u_variant;
+uniform float u_seed;
 uniform vec3 u_a;
 uniform vec3 u_b;
 
@@ -57,14 +59,46 @@ float box(vec3 p, vec3 b) {
   return length(max(q, 0.0)) + min(max(q.x, max(q.y, q.z)), 0.0);
 }
 
+float torus(vec3 p, vec2 t) {
+  vec2 q = vec2(length(p.xz) - t.x, p.y);
+  return length(q) - t.y;
+}
+
+float sphere(vec3 p, float radius) {
+  return length(p) - radius;
+}
+
 float scene(vec3 p, float phase) {
-  p.xy *= rot(phase * 0.35);
-  p.xz *= rot(phase);
-  vec3 cell = p;
-  cell.xy = mod(cell.xy + 1.4, 2.8) - 1.4;
-  float core = box(cell, vec3(0.18, 0.18, 0.18));
-  float tunnel = abs(length(p.xy) - 0.85) - 0.035;
-  return min(core, tunnel);
+  float variant = floor(u_variant + 0.5);
+  p.xy *= rot(phase * (0.22 + 0.04 * variant));
+  p.xz *= rot(phase * (0.6 + 0.08 * variant));
+  if (variant < 0.5) {
+    vec3 cell = p;
+    cell.xy = mod(cell.xy + 1.4, 2.8) - 1.4;
+    float core = box(cell, vec3(0.18, 0.18, 0.18));
+    float tunnel = abs(length(p.xy) - 0.85) - 0.035;
+    return min(core, tunnel);
+  }
+  if (variant < 1.5) {
+    vec3 q = p;
+    q.z = mod(q.z + 1.2, 2.4) - 1.2;
+    return torus(q, vec2(0.58 + 0.12 * sin(phase), 0.035));
+  }
+  if (variant < 2.5) {
+    vec3 q = p;
+    q.xy = mod(q.xy + 0.9, 1.8) - 0.9;
+    return box(q, vec3(0.12, 0.34 + 0.08 * sin(phase), 0.12));
+  }
+  if (variant < 3.5) {
+    vec3 q = p;
+    q.xz = abs(q.xz) - vec2(0.42 + 0.12 * sin(phase), 0.28);
+    return min(sphere(q, 0.18), abs(length(p.xy) - 0.72) - 0.025);
+  }
+  vec3 q = p;
+  q.xy = mod(q.xy + 0.72, 1.44) - 0.72;
+  float lattice = max(abs(q.x), abs(q.y)) - 0.035;
+  float shell = abs(length(p) - 0.92) - 0.028;
+  return min(lattice, shell);
 }
 
 void main() {
@@ -96,7 +130,7 @@ void main() {
   vec3 color = mix(u_a, u_b, 0.5 + 0.5 * sin(phase + uv.x * 2.0));
   float shade = exp(-t * 0.18) * hit;
   float scan = smoothstep(0.018, 0.0, abs(fract((uv.y + cycle) * 28.0) - 0.5));
-  vec3 outColor = color * (shade * 0.8 + glow * 0.04 + scan * 0.08);
+  vec3 outColor = color * (shade * 0.8 + glow * (0.035 + u_variant * 0.006) + scan * 0.08);
   outColor *= smoothstep(1.45, 0.2, length(uv));
 
   gl_FragColor = vec4(outColor, 1.0);
@@ -153,6 +187,8 @@ function setupGl() {
     resolution: gl.getUniformLocation(program, "u_resolution"),
     time: gl.getUniformLocation(program, "u_time"),
     loop: gl.getUniformLocation(program, "u_loop"),
+    variant: gl.getUniformLocation(program, "u_variant"),
+    seed: gl.getUniformLocation(program, "u_seed"),
     a: gl.getUniformLocation(program, "u_a"),
     b: gl.getUniformLocation(program, "u_b"),
   };
@@ -166,6 +202,8 @@ function draw(now) {
   gl.uniform2f(uniforms.resolution, canvas.width, canvas.height);
   gl.uniform1f(uniforms.time, elapsed * speed);
   gl.uniform1f(uniforms.loop, activePiece.loopSeconds);
+  gl.uniform1f(uniforms.variant, pieceVariant(activePiece));
+  gl.uniform1f(uniforms.seed, pieceSeed(activePiece));
   gl.uniform3f(uniforms.a, activePiece.palette[0], activePiece.palette[1], activePiece.palette[2]);
   gl.uniform3f(uniforms.b, activePiece.palette[3], activePiece.palette[4], activePiece.palette[5]);
   gl.drawArrays(gl.TRIANGLES, 0, 6);
@@ -516,11 +554,25 @@ function pickPiece(date) {
   };
 }
 
+function pieceVariant(piece) {
+  const title = String(piece.title || "").toLowerCase();
+  if (title.includes("tunnel") || title.includes("camera")) return 3;
+  if (title.includes("orbital") || title.includes("halo")) return 1;
+  if (title.includes("box") || title.includes("reflective")) return 2;
+  if (title.includes("lattice") || title.includes("wireframe")) return 4;
+  return hash(`${piece.date}:${piece.title}:three`) % 5;
+}
+
+function pieceSeed(piece) {
+  return (hash(`${piece.date}:${piece.title}:three`) % 10000) / 10000;
+}
+
 function makeRecipe(piece) {
   return `// Daily Three.js VJ Scene
 // Date: ${piece.date}
 // Title: ${piece.title}
 // Loop seconds: ${piece.loopSeconds}
+// Variant: ${pieceVariant(piece)}
 // Palette A: vec3(${piece.palette.slice(0, 3).join(", ")})
 // Palette B: vec3(${piece.palette.slice(3, 6).join(", ")})
 // Scene: tunnel camera, orbiting boxes, glow pass placeholder
