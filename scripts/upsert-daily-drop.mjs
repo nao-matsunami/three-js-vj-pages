@@ -8,24 +8,19 @@ const dropsPath = path.join(rootDir, "data", "drops.json");
 const dateArg = process.argv.find((arg) => arg.startsWith("--date="));
 const targetDate = dateArg ? dateArg.slice("--date=".length) : localIsoDate(new Date());
 
-const titles = [
-  "Orbital Mesh Gate",
-  "Depth Lattice Sweep",
-  "Camera Halo Tunnel",
-  "Wireframe Pulse Room",
-  "Reflective Box Drift",
-];
-
-const copyLines = [
-  "3Dカメラ、軌道メッシュ、奥行き感を主役にしたThree.js VJループのサンプル。",
-  "販売用3D映像パックに展開するための、軽量なWebプレビューフレーム。",
-  "XRや空間投影に転用しやすい、カメラ運動とメッシュ周期をそろえた抽象ループ。",
-];
-
-const whyLines = [
-  "Three.jsはカメラ、メッシュ、ライト、ポストエフェクトを扱う3D VJ素材に向く。まずは日次データと公開導線を固定し、後からscene実装を差し替えやすい形にした。",
-  "3D素材は視点運動がループの印象を左右するため、整数周期のカメラ揺れとメッシュ配置を前提にした。GitHub Pagesでは軽量プレビュー、販売先では高品質レンダーを扱う。",
-  "XRや空間演出へ展開するなら、2Dパターンより3Dシーンの方が拡張余地が大きい。今日のサンプルはそのためのフレーム確認を優先した。",
+const engines = [
+  {
+    slug: "raymarch-scene",
+    titles: ["Orbital Mesh Gate", "Depth Lattice Sweep", "Camera Halo Tunnel", "Wireframe Pulse Room", "Reflective Box Drift"],
+    copy: "3Dカメラ、軌道メッシュ、奥行き感を主役にしたThree.js VJループのサンプル。",
+    why: "既存系列として、カメラ、奥行き、raymarch風の立体感を増やす。現場で映える3D抽象素材の軸にする。",
+  },
+  {
+    slug: "particle-depth",
+    titles: ["Depth Particle Swarm", "Point Cloud Gate", "Orbital Dust Room", "Z Particle Bloom"],
+    copy: "点群と奥行き感を主役にしたThree.js向けVJループ。",
+    why: "raymarchの塊とは別に、点群、粒子、Z方向の密度で見せるラインを作る。軽量で空間投影にも合わせやすい。",
+  },
 ];
 
 const data = JSON.parse(await fs.readFile(dropsPath, "utf8"));
@@ -36,15 +31,17 @@ if (existing) {
 }
 
 const seed = hash(targetDate);
+const engine = engines[seed % engines.length];
 const hueA = fract(seed * 0.0183);
 const hueB = fract(hueA + 0.38);
 const drop = {
   date: targetDate,
-  title: titles[seed % titles.length],
+  title: engine.titles[seed % engine.titles.length],
+  engine: engine.slug,
   loopSeconds: [8, 12, 16, 20][seed % 4],
   palette: [...hsv(hueA, 0.68, 0.92), ...hsv(hueB, 0.72, 0.78)],
-  copy: copyLines[seed % copyLines.length],
-  why: whyLines[seed % whyLines.length],
+  copy: engine.copy,
+  why: engine.why,
 };
 
 data.drops.unshift(drop);

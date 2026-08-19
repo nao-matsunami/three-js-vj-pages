@@ -2,8 +2,8 @@
   "date": "2026-08-20",
   "headline": "Reflective Box Drift",
   "headlineEn": "Reflective Box Drift",
-  "summary": "3Dカメラ、軌道メッシュ、奥行き感を主役にしたThree.js VJループのサンプル。",
-  "summaryEn": "3Dカメラ、軌道メッシュ、奥行き感を主役にしたThree.js VJループのサンプル。",
+  "summary": "点群と奥行き感を主役にしたThree.js向けVJループ。",
+  "summaryEn": "点群と奥行き感を主役にしたThree.js向けVJループ。",
   "links": [
     {
       "label": "Today's sample",
@@ -34,8 +34,8 @@
     {
       "title": "今日の制作メモ",
       "titleEn": "Production note",
-      "body": "Three.jsはカメラ、メッシュ、ライト、ポストエフェクトを扱う3D VJ素材に向く。まずは日次データと公開導線を固定し、後からscene実装を差し替えやすい形にした。",
-      "bodyEn": "Three.jsはカメラ、メッシュ、ライト、ポストエフェクトを扱う3D VJ素材に向く。まずは日次データと公開導線を固定し、後からscene実装を差し替えやすい形にした。",
+      "body": "raymarchの塊とは別に、点群、粒子、Z方向の密度で見せるラインを作る。軽量で空間投影にも合わせやすい。",
+      "bodyEn": "raymarchの塊とは別に、点群、粒子、Z方向の密度で見せるラインを作る。軽量で空間投影にも合わせやすい。",
       "links": [
         {
           "label": "Three.js Manual",

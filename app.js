@@ -137,6 +137,43 @@ void main() {
 }
 `.trim();
 
+const particleDepthShader = `
+precision highp float;
+uniform vec2 u_resolution;
+uniform float u_time;
+uniform float u_loop;
+uniform float u_variant;
+uniform float u_seed;
+uniform vec3 u_a;
+uniform vec3 u_b;
+#define PI 3.141592653589793
+mat2 rot(float a){float s=sin(a),c=cos(a);return mat2(c,-s,s,c);}
+void main(){
+  vec2 uv=(gl_FragCoord.xy*2.0-u_resolution.xy)/min(u_resolution.x,u_resolution.y);
+  float cycle=mod(u_time,u_loop)/u_loop;
+  float phase=cycle*PI*2.0;
+  vec2 p=uv*rot(sin(phase)*.18);
+  float field=0.0;
+  for(int i=0;i<42;i++){
+    float fi=float(i);
+    float a=fi*.399+phase*(.35+mod(fi,5.0)*.025);
+    float z=fract(fi*.071+cycle+u_seed*.1);
+    vec2 c=vec2(cos(a),sin(a*.83))*mix(.08,.82,z);
+    float r=.018*(1.0-z)+.006;
+    field+=smoothstep(r,0.0,length(p-c))*(1.0-z);
+  }
+  float grid=smoothstep(.018,0.0,abs(fract((p.y+cycle)*18.0)-.5))*.22;
+  field=(field+grid)*smoothstep(1.35,.18,length(uv));
+  vec3 color=mix(u_a,u_b,.5+.5*sin(phase+length(p)*5.0+u_seed*6.0));
+  gl_FragColor=vec4(color*(field+field*field*.55),1.0);
+}
+`.trim();
+
+const fragmentShaders = {
+  "raymarch-scene": fragmentShader,
+  "particle-depth": particleDepthShader,
+};
+
 initialize();
 
 async function initialize() {
@@ -171,7 +208,8 @@ async function loadData() {
 }
 
 function setupGl() {
-  program = createProgram(vertexShader, fragmentShader);
+  if (program) gl.deleteProgram(program);
+  program = createProgram(vertexShader, shaderForPiece(activePiece));
   gl.useProgram(program);
   const buffer = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -287,6 +325,7 @@ function renderArchive() {
       activePiece = piece;
       startTime = performance.now();
       pausedAt = 0;
+      setupGl();
       renderContent();
     });
     const small = document.createElement("small");
@@ -567,11 +606,20 @@ function pieceSeed(piece) {
   return (hash(`${piece.date}:${piece.title}:three`) % 10000) / 10000;
 }
 
+function pieceEngine(piece) {
+  return piece.engine || "raymarch-scene";
+}
+
+function shaderForPiece(piece) {
+  return fragmentShaders[pieceEngine(piece)] || fragmentShaders["raymarch-scene"];
+}
+
 function makeRecipe(piece) {
   return `// Daily Three.js VJ Scene
 // Date: ${piece.date}
 // Title: ${piece.title}
 // Loop seconds: ${piece.loopSeconds}
+// Engine: ${pieceEngine(piece)}
 // Variant: ${pieceVariant(piece)}
 // Palette A: vec3(${piece.palette.slice(0, 3).join(", ")})
 // Palette B: vec3(${piece.palette.slice(3, 6).join(", ")})
