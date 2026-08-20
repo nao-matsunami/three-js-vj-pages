@@ -13,6 +13,41 @@
   ],
   "drops": [
     {
+      "date": "2026-08-21",
+      "title": "Wireframe Pulse Room",
+      "engine": "raymarch-scene",
+      "loopSeconds": 8,
+      "palette": [
+        0.92,
+        0.294,
+        0.803,
+        0.518,
+        0.78,
+        0.218
+      ],
+      "copy": "3Dカメラ、軌道メッシュ、奥行き感を主役にしたThree.js VJループのサンプル。",
+      "why": "既存系列として、カメラ、奥行き、raymarch風の立体感を増やす。現場で映える3D抽象素材の軸にする。",
+      "research": [
+        {
+          "date": "2026-08-21",
+          "summary": "今日はWebGLRendererとAnimationLoopの運用を重視した。XRや展示用途へ広げるなら、レンダーサイズ、カメラ、時間の扱いを最初から分離しておく価値がある。",
+          "sources": [
+            {
+              "label": "Three.js WebGLRenderer",
+              "url": "https://threejs.org/docs/#api/en/renderers/WebGLRenderer",
+              "note": "レンダラー設定の確認に使う。"
+            },
+            {
+              "label": "Three.js Creating a Scene",
+              "url": "https://threejs.org/docs/#manual/en/introduction/Creating-a-scene",
+              "note": "シーン構造の基本確認。"
+            }
+          ],
+          "updatedAt": "2026-08-20T21:45:11.471Z"
+        }
+      ]
+    },
+    {
       "date": "2026-08-20",
       "title": "Reflective Box Drift",
       "engine": "particle-depth",
