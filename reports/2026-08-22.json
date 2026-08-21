@@ -1,0 +1,79 @@
+{
+  "date": "2026-08-22",
+  "headline": "Z Particle Bloom",
+  "headlineEn": "Z Particle Bloom",
+  "summary": "点群と奥行き感を主役にしたThree.js向けVJループ。",
+  "summaryEn": "点群と奥行き感を主役にしたThree.js向けVJループ。",
+  "links": [
+    {
+      "label": "Today's sample",
+      "url": "../outputs/2026-08-22_z-particle-bloom.html"
+    },
+    {
+      "label": "Live preview",
+      "url": "../live.html"
+    },
+    {
+      "label": "Three.js Manual",
+      "url": "https://threejs.org/manual/"
+    },
+    {
+      "label": "Three.js Documentation",
+      "url": "https://threejs.org/docs/"
+    },
+    {
+      "label": "Three.js Manual",
+      "url": "https://threejs.org/manual/"
+    },
+    {
+      "label": "Three.js Documentation",
+      "url": "https://threejs.org/docs/"
+    }
+  ],
+  "sections": [
+    {
+      "title": "今日の制作メモ",
+      "titleEn": "Production note",
+      "body": "raymarchの塊とは別に、点群、粒子、Z方向の密度で見せるラインを作る。軽量で空間投影にも合わせやすい。",
+      "bodyEn": "raymarchの塊とは別に、点群、粒子、Z方向の密度で見せるラインを作る。軽量で空間投影にも合わせやすい。",
+      "links": [
+        {
+          "label": "Three.js Manual",
+          "url": "https://threejs.org/manual/"
+        },
+        {
+          "label": "Three.js Documentation",
+          "url": "https://threejs.org/docs/"
+        }
+      ]
+    },
+    {
+      "title": "Daily Research 2026-08-22",
+      "titleEn": "Daily Research 2026-08-22",
+      "body": "今日はThree.jsの強みであるカメラ運動、メッシュ、ライトを主軸にした。現場映えする素材にするには、2D模様よりも奥行きと視点移動をループさせる方が印象を作りやすい。",
+      "bodyEn": "今日はThree.jsの強みであるカメラ運動、メッシュ、ライトを主軸にした。現場映えする素材にするには、2D模様よりも奥行きと視点移動をループさせる方が印象を作りやすい。",
+      "links": [
+        {
+          "label": "Three.js Manual",
+          "url": "https://threejs.org/manual/"
+        },
+        {
+          "label": "Three.js Documentation",
+          "url": "https://threejs.org/docs/"
+        }
+      ]
+    },
+    {
+      "title": "今日のミニ試作候補",
+      "titleEn": "Today's mini prototype candidate",
+      "body": "Z Particle Bloom を 20 秒でループするVJサンプルとして固定しました。GitHub Pagesでは軽量プレビューを見せ、販売用のMP4やalpha MOVは選抜後にMac miniで固定FPSレンダーします。",
+      "bodyEn": "Z Particle Bloom is fixed as a 20-second looping VJ sample. GitHub Pages carries the lightweight preview, while saleable MP4 and alpha MOV masters should be rendered later on the Mac mini at fixed FPS.",
+      "links": [
+        {
+          "label": "Today's sample",
+          "url": "../outputs/2026-08-22_z-particle-bloom.html"
+        }
+      ]
+    }
+  ]
+}
