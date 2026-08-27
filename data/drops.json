@@ -13,6 +13,41 @@
   ],
   "drops": [
     {
+      "date": "2026-08-28",
+      "title": "Point Cloud Gate",
+      "engine": "particle-depth",
+      "loopSeconds": 12,
+      "palette": [
+        0.92,
+        0.294,
+        0.826,
+        0.539,
+        0.78,
+        0.218
+      ],
+      "copy": "点群と奥行き感を主役にしたThree.js向けVJループ。",
+      "why": "raymarchの塊とは別に、点群、粒子、Z方向の密度で見せるラインを作る。軽量で空間投影にも合わせやすい。",
+      "research": [
+        {
+          "date": "2026-08-28",
+          "summary": "今日はThree.jsの強みであるカメラ運動、メッシュ、ライトを主軸にした。現場映えする素材にするには、2D模様よりも奥行きと視点移動をループさせる方が印象を作りやすい。",
+          "sources": [
+            {
+              "label": "Three.js Manual",
+              "url": "https://threejs.org/manual/",
+              "note": "Three.jsの制作手順確認に使う。"
+            },
+            {
+              "label": "Three.js Documentation",
+              "url": "https://threejs.org/docs/",
+              "note": "API確認の基準。"
+            }
+          ],
+          "updatedAt": "2026-08-27T21:45:09.199Z"
+        }
+      ]
+    },
+    {
       "date": "2026-08-27",
       "title": "Depth Lattice Sweep",
       "engine": "raymarch-scene",
